@@ -17,6 +17,30 @@
     Thanks to CasualGamer for the base code <3
 */
 
+void    SplashScreen(HANDLE & hConsole)
+{
+    //HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+    SetConsoleTextAttribute(hConsole, 20);
+    std::cout   << "@@@@@@@   @@@  @@@   @@@@@@   @@@@@@@    @@@@@@   @@@  @@@      @@@@@@   " << std::endl
+                << "@@@@@@@@  @@@  @@@  @@@@@@@@  @@@@@@@@  @@@@@@@@  @@@  @@@     @@@@@@@@  " << std::endl
+                << "@@!  @@@  @@!  @@@  @@!  @@@  @@!  @@@  @@!  @@@  @@!  @@@          @@@  " << std::endl
+                << "!@!  @!@  !@!  @!@  !@!  @!@  !@!  @!@  !@!  @!@  !@!  @!@         @!@   " << std::endl
+                << "@!@  !@!  @!@  !@!  @!@  !@!  @!@!!@!   @!@!@!@!  @!@!@!@!        !!@    " << std::endl
+                << "!@!  !!!  !@!  !!!  !@!  !!!  !!@!@!    !!!@!!!!  !!!@!!!!       !!:     " << std::endl
+                << "!!:  !!!  :!:  !!:  !!:  !!!  !!: :!!   !!:  !!!  !!:  !!!      !:!      " << std::endl
+                << ":!:  !:!   ::!!:!   :!:  !:!  :!:  !:!  :!:  !:!  :!:  !:!     :!:       " << std::endl
+                << " :::: ::    ::::    ::::: ::  ::   :::  ::   :::  ::   :::     :: :::::  " << std::endl
+                << ":: :  :      :       : :  :    :   : :   :   : :   :   : :     :: : :::  " << std::endl << std::endl;
+    /*SetConsoleTextAttribute(hConsole, 7);*/
+
+    //for (int k = 1; k < 255; k++)
+    //{
+    //    // pick the colorattribute k you want
+    //    SetConsoleTextAttribute(hConsole, k);
+    //    std::cout << k << " I want to be nice today!" << std::endl;
+    //}
+}
+
 BOOL    InjectDLL(LPCSTR DLL_PATH, DWORD ProcessID)
 {
     LPVOID LoadLibAddy, RemoteString;
@@ -37,7 +61,7 @@ BOOL    InjectDLL(LPCSTR DLL_PATH, DWORD ProcessID)
     RemoteString = (LPVOID)VirtualAllocEx(Proc, NULL, strlen(DLL_PATH) + 1, MEM_COMMIT, PAGE_READWRITE);
     WriteProcessMemory(Proc, RemoteString, (LPVOID)DLL_PATH, strlen(DLL_PATH) + 1, NULL);
     CreateRemoteThread(Proc, NULL, NULL, (LPTHREAD_START_ROUTINE)LoadLibAddy, RemoteString, NULL, NULL);
-
+    std::cout << "Success" << std::endl;
     CloseHandle(Proc);
 
     return true;
@@ -72,11 +96,15 @@ int     main(int argc, char** argv)
 {
     DWORD   pid;
     bool    unload;
-    
+    HANDLE hConsole;
+
     if (argc > 1 && !std::strcmp(argv[1], "-u"))
         unload = true;
     else
         unload = false;
+
+    hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+    SplashScreen(hConsole);
 
     if (argc == 2 + unload)
     {
@@ -103,6 +131,7 @@ int     main(int argc, char** argv)
         //std::cerr << "          -u  : unload the dll from the target after pressing enter" << std::endl;
         std::cerr << "Error : Usage : ./Dvorah2 <dll_path> [OPTION : PID]" << std::endl;
         std::cerr << "          PID : avoid the search and inject directly to the targeted PID" << std::endl << std::endl;
+        SetConsoleTextAttribute(hConsole, 7);
         return (1);
     }
 
@@ -110,6 +139,7 @@ int     main(int argc, char** argv)
 
     if (unload)
         UnloadDLL(argv[1 + unload], pid);
-
+    
+    SetConsoleTextAttribute(hConsole, 7);
     return (0);
 }
