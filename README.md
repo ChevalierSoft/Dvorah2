@@ -14,7 +14,7 @@
 Simple DLL injector usable with one command line.
 
 ## Release
-There is a release for 32bit or 64bit availlable.
+There is a release for 32bit/64bit version with Debug/Release precompiled [HERE](https://github.com/ChevalierSoft/Dvorah2/releases/tag/v2.0).
 
 ## Compilation
 You need visual studio to complie this code.
