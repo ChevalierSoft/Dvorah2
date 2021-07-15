@@ -31,7 +31,7 @@ If you already know the PID you can add it at the end of the command.
 `Dvorah2.exe <dll_path> [PID]`
 
 ## Thanks
-Thanks to [CasualGamer](https://github.com/CasualCoder91) for the base code. the flags makes the injector compatible with more dll than Dvorah v1 could.
+Thanks to [CasualCoder](https://github.com/CasualCoder91) for the base code. the flags makes the injector compatible with more dll than Dvorah v1 could.
 
 ## To do
 - g++ compilation
