@@ -129,7 +129,7 @@ int     main(int argc, char** argv)
     {
         //std::cerr << "Error : Usage : ./Dvorah2 [FLAG : -u] <dll_path> [OPTION : PID]" << std::endl;
         //std::cerr << "          -u  : unload the dll from the target after pressing enter" << std::endl;
-        std::cerr << "Error : Usage : ./Dvorah2 <full_dll_path> [OPTION : PID]" << std::endl;
+        std::cerr << "Error : Usage : Dvorah2.exe <full_dll_path> [OPTION : PID]" << std::endl;
         std::cerr << "          PID : avoid the search and inject directly to the targeted PID" << std::endl << std::endl;
         SetConsoleTextAttribute(hConsole, 7);
         return (1);
