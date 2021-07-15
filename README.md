@@ -22,12 +22,13 @@ You need visual studio to complie this code.
 Maybe in the next release I'll allow g++ compilation.
 
 ## Usage
-`./Dvorah2 <dll_path>`
+`Dvorah2.exe <full_dll_path>`
 
+You need to write the full path like `C:\full\path.dll`. If you only put something like `./my_dll` it will not work.
 
 If you already know the PID you can add it at the end of the command.
 
-`./Dvorah2 <dll_path> [PID]`
+`Dvorah2.exe <dll_path> [PID]`
 
 ## Thanks
 Thanks to [CasualGamer](https://github.com/CasualCoder91) for the base code. the flags makes the injector compatible with more dll than Dvorah v1 could.
