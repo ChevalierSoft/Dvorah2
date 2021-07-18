@@ -24,7 +24,7 @@ Maybe in the next release I'll allow g++ compilation.
 ## Usage
 `Dvorah2.exe <full_dll_path>`
 
-You need to write the full path like `C:\full\path.dll`. If you only put something like `./my_dll` it will not work.
+You need to write the full path like `C:\full\path.dll`. If you only put something like `./my.dll` it will not work. `$pdw\my.dll` only works on powershell.
 
 If you already know the PID you can add it at the end of the command.
 
